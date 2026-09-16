@@ -2,7 +2,7 @@
 
 Short reference cards naming each discipline's dominant paper-type frequencies, top journals, preregistration norms, and method conventions. Read by `/research-ideation`, `/interview-me`, `/preregister`, and the `editor` agent (in `/review-paper --peer`) when the user gives a `paper_type` or domain hint without specifying a target journal.
 
-**Scope.** v1.8.0 ships two cards: **economics** and **political science**. Other social sciences (psychology, sociology, public health) are deferred indefinitely (owner-set scope, 2026-06-10: econ + closely related fields — do not build without an explicit owner ask). To add your own discipline, copy a card section, fill the four fields (paper-type frequencies, journals, preregistration norms, method conventions), and reference the new short-name from `journal-profiles.md` and `methods-referee.md`.
+**Scope.** Three cards ship: **economics**, **political science**, and **regional science & urban economics** (added 2026-09-14 by owner ask — see the card's own note). Other social sciences (psychology, sociology, public health) are deferred indefinitely (owner-set scope, 2026-06-10: econ + closely related fields — do not build without an explicit owner ask). To add your own discipline, copy a card section, fill the four fields (paper-type frequencies, journals, preregistration norms, method conventions), and reference the new short-name from `journal-profiles.md` and `methods-referee.md`.
 
 **Maintenance.** When you add a journal profile to `journal-profiles.md`, cross-reference it here. When you add a paper type to `methods-referee.md`, cross-reference it here.
 
@@ -63,6 +63,58 @@ Short reference cards naming each discipline's dominant paper-type frequencies, 
 - Code: R is dominant; Stata still common in IR / comparative; Python rising for text-as-data work.
 
 **Cross-references.** `methods-referee.md` paper types: reduced-form, formal-theory, survey-experiment, theory+empirics, descriptive (structural is rare in poli-sci). `journal-profiles.md`: APSR, AJPS, JOP.
+
+---
+
+## Regional Science & Urban Economics (`regional-sci`)
+
+> **Added 2026-09-14 by owner ask** (this fork's owner, for the K2 project). The scope note above
+> reserves new disciplines for "an explicit owner ask" and limits them to "econ + closely related
+> fields" — regional science is adjacent to econ and was requested directly, so both conditions
+> hold. Recorded here rather than assumed.
+
+**Paper-type frequencies (rough share of empirical work in the field's applied journals).**
+
+| Type | Share | Notes |
+|---|---|---|
+| Reduced-form | ~40% | Regional panels, spatial panels, first-difference and cross-section designs. |
+| Descriptive / measurement | ~30% | Markedly higher than in econ. Building a regional indicator, an accessibility index, small-area estimates, or an imputed stock variable is a publishable contribution in its own right. |
+| Theory + empirics | ~15% | New economic geography, agglomeration, spatial equilibrium with an empirical test. |
+| Structural | ~10% | Quantitative spatial equilibrium models; concentrated in the economics-facing journals. |
+| Formal-theory | ~5% | Pure spatial theory. Rare in the policy-facing outlets. |
+
+**Dominant journals.** `RSPP` ships in `journal-profiles.md`. The wider set, none of which is
+profiled yet: *Journal of Regional Science*, *Papers in Regional Science*, *Regional Science and
+Urban Economics*, *Journal of Urban Economics*, *Annals of Regional Science*, *Regional Studies*,
+*Urban Studies*, *Journal of Housing Economics*, *Housing Studies*, *Environment and Planning A*.
+The field spans an economics wing (RSUE, JUE) and a planning/geography wing (Regional Studies,
+Urban Studies, EPA) whose refereeing tastes differ substantially — the economics wing presses on
+identification, the planning wing on conceptual framing and policy reading.
+
+**Preregistration norms.** Effectively none. The empirical work is overwhelmingly observational
+and administrative-data-based, so there is no registry analogue to the AEA RCT Registry. Data and
+code availability statements are increasingly expected at acceptance; a full deposit is not yet
+uniformly enforced.
+
+**Reporting conventions** *(what these venues expect to see on the page — not advice on what to estimate)*.
+
+- **Significance stars ARE used**, unlike AEA-imprint journals. A `+` or `†` marker for 10% is
+  common and accepted.
+- **Spatial units are named and justified.** Referees ask which administrative tier the analysis
+  sits at and why — in France, commune / EPCI / département / région; elsewhere NUTS, MSA, LAU.
+  The modifiable areal unit problem is a live objection, not a formality.
+- **For spatial models, the weight matrix is part of the result.** Contiguity order or distance
+  band, and whether it is row-standardised, belong in the table note; papers that omit it get
+  asked. Where a model's coefficients are not directly interpretable, decomposed effects are
+  reported alongside them.
+- **Maps are evidence and are held to figure standards** — projection, class breaks, legend units,
+  and the source line all get reviewed. A choropleth with unexplained bins draws comment.
+- **Code:** R dominates (`sf`, `spdep`, `spatialreg`); Stata and Python are both common; GIS
+  outputs (QGIS, ArcGIS) appear in the planning wing.
+
+**Cross-references.** `methods-referee.md` paper types: reduced-form, descriptive,
+theory+empirics, structural. `journal-profiles.md`: RSPP — including its paper-type note that a
+paper built on an *imputed* dependent variable should be refereed as `descriptive` first.
 
 ---
 

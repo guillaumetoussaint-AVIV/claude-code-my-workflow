@@ -6,6 +6,21 @@ paths:
 
 # Beamer → Quarto Auto-Sync Rule (MANDATORY)
 
+> ## 🅓 DORMANT for K2 — not in force (2026-09-14)
+>
+> **This rule does not apply to this project and must not be acted on.** K2 has no Quarto decks
+> and no `.qmd` files to sync to; conference talks are Beamer PDF only. There is nothing on the
+> right-hand side of the mapping table below, so "sync it automatically" would mean inventing a
+> file nobody asked for.
+>
+> The rule is **kept, not deleted**, because the Quarto machinery it governs is itself parked
+> rather than removed — `docs/` and `guide/` are scanned surfaces for
+> `scripts/check-surface-sync.py`, and deleting them fails the backtest. See *Dormant Machinery*
+> in [`CLAUDE.md`](../../CLAUDE.md).
+>
+> **To reactivate:** delete this block, fill in the mapping table, and confirm Quarto is
+> installed (it is not, as of this date).
+
 **Every edit to a Beamer `.tex` file MUST be immediately synced to the corresponding Quarto `.qmd` file — automatically, without the user asking.** This is non-negotiable.
 
 ## The Rule

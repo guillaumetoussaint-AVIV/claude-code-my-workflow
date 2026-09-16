@@ -28,6 +28,11 @@ ROOT_ALLOW_DIRS = {
     ".claude", ".git", ".github", ".githooks", ".vscode", "Figures", "Preambles",
     "Quarto", "Slides", "docs", "explorations", "guide", "master_supporting_docs",
     "quality_reports", "scripts", "templates",
+    # K2's mass-appraisal and spatial-model source, imported from the machine it
+    # was written on. It is mixed R and Python, so it does not belong under
+    # scripts/R/; the layout question is open and the code is tracked here in the
+    # meantime rather than left untracked.
+    "Code",
 }
 
 # Names that mean "I was experimenting". These must not live in tracked source.
@@ -47,7 +52,13 @@ DRAFT_PATTERNS = [
 ARCHIVE_DIRS = ["explorations", "master_supporting_docs"]
 
 def tracked():
-    r = subprocess.run(["git", "-C", ROOT, "ls-files"], capture_output=True, text=True)
+    # core.quotepath=false: without it, git quotes any non-ASCII path in
+    # C-style octal escapes ("Code/Analyse FF pr\303\251dits 2019.R"), and the
+    # leading quote character then breaks the top-level-dir split below.
+    r = subprocess.run(
+        ["git", "-c", "core.quotepath=false", "-C", ROOT, "ls-files"],
+        capture_output=True, text=True, encoding="utf-8",
+    )
     return [f for f in r.stdout.split("\n") if f]
 
 def main():
