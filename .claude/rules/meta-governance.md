@@ -1,5 +1,32 @@
 # Meta-Governance: This Repository's Dual Nature
 
+> ## Fork note — K2 has ONE identity, not two (2026-09-14)
+>
+> This is a **fork** of `pedrohcgs/claude-code-my-workflow`, and the dual nature described below
+> does not survive the fork. K2 is a **working project only**. Nobody forks this repo to bootstrap
+> their own workflow; there is no downstream audience to keep things generic for.
+>
+> **What that changes, in practice:**
+>
+> - The *generic vs specific* test below — "would a biology PhD student forking this benefit?" —
+>   is **retired**. The operative question is simply: *is this true of K2?* Configuration should be
+>   as specific as the project actually is. The RSPP journal profile and the `regional-sci`
+>   discipline card are specific on purpose.
+> - `MEMORY.md` and the native auto-memory tier keep their split, but for a different reason:
+>   `MEMORY.md` is what survives into the *next paper*, auto memory is what is true of *this
+>   machine*. The size cap stays (readability, not context budget).
+> - **Upstream-facing machinery stays untouched.** `CHANGELOG.md`, `README.md`, `docs/`, and
+>   `guide/` describe the template, not K2, and are left alone — partly because rewriting them
+>   buys nothing, and partly because several are scanned surfaces for
+>   `scripts/check-surface-sync.py` (see *Dormant Machinery* in [`CLAUDE.md`](../../CLAUDE.md)).
+>   Where this file and `CLAUDE.md` disagree about K2, **`CLAUDE.md` wins.**
+> - **Inherited owner rulings are inherited, not automatically binding.** They were made by the
+>   template's owner for the template. Each one stays in force here until this fork's owner rules
+>   otherwise, and any such ruling is recorded dated, in place, with its reason — see the
+>   causal-methods veto below.
+>
+> Everything below this block is upstream text, kept as the record.
+
 **This repository is BOTH a working project AND a template for others.**
 
 Understanding this distinction is critical for deciding what to commit, what to document, and where to save learnings.
@@ -43,6 +70,40 @@ When creating or modifying content, ask:
 - API keys, credentials, local workarounds
 
 ### "Does it prescribe a method the owner has not vetted?"
+
+> ## 🅚 Fork owner ruling, 2026-09-14 — the veto is LIFTED for K2
+>
+> **This ruling supersedes the 2026-08-23 ruling below, for this fork only.** The upstream text is
+> preserved unchanged underneath as the record.
+>
+> **What is now permitted.** Method-level engagement with the empirical strategy of *this project*:
+> specification choices, diagnostics, robustness, inference, endogeneity, and spatial
+> identification. This is what the paper's own live referee exchange is about — Reviewer #1 asked
+> why no spatial model was estimated, Reviewer #2 asked how endogeneity and multicollinearity are
+> handled — and a collaborator who may not discuss those is not much use during an R&R.
+>
+> **The conditions, which are the whole point of the ruling and are not optional.**
+>
+> 1. **Sourced or labelled.** A methodological claim either cites something (a paper, a named
+>    result, the documentation of the estimator) or is labelled explicitly as judgment. A claim
+>    with neither is not made.
+> 2. **Nothing reaches the manuscript or the response letter unvetted.** Advice is advice. The
+>    owner decides what goes in the paper; that boundary does not move.
+> 3. **Strength of claim matches strength of evidence.** Correlational is not causal, illustrated
+>    is not validated, and "consistent with" is not "shows". The paper's own conclusion already
+>    holds this line — the analysis is framed as robust correlational patterns rather than
+>    definitive causal estimates — and advice must not quietly erode it.
+> 4. **Uncertainty is stated, not smoothed.** Where the right answer is contested or depends on
+>    something not known here, say so rather than picking the tidy option.
+> 5. **Scope is K2.** This lifts the veto for this project's own empirical work. It is not a
+>    licence to write general how-to-do-causal-inference content into the repo's shared surfaces.
+>
+> **Reason.** The upstream ruling exists to stop a template shipping unvetted methodological
+> prescriptions to strangers. This fork has no strangers — it has one owner, one paper, and a
+> referee report asking method questions directly. The risk the ruling guards against is real but
+> differently shaped here, and conditions 1–4 address it more precisely than silence does.
+>
+> Decision record: `quality_reports/decisions/2026-09-14_causal-methods-veto-lifted.md`.
 
 > **Owner ruling, 2026-08-23.** The v2.5 veto on unvetted difference-in-differences content is
 > **extended to empirical causal methods generally** — regression discontinuity, synthetic

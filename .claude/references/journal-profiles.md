@@ -7,7 +7,7 @@ Calibration data for the `/review-paper --peer [journal]` simulated peer-review 
 
 **How this file is used.** The `editor` agent reads this file before each `--peer` run, picks the requested `[journal]`, and uses its Referee-pool weights + Typical concerns to select two referees with different dispositions and to seed their pet-peeve priors.
 
-**Customizing for your field.** This file ships **eight profiles**: five econ (AER, QJE, JPE, ECMA, ReStud) and three political science (APSR, AJPS, JOP). To use `--peer` for another field (finance, biology, CS, etc.), copy `templates/journal-profile-template.md` into a new section below, fill in the schema, and reference it by the short name you define. See the [Field adaptation](#field-adaptation) section at the bottom.
+**Customizing for your field.** This file ships **nine profiles**: five econ (AER, QJE, JPE, ECMA, ReStud), three political science (APSR, AJPS, JOP), and one regional science (RSPP — added 2026-09-14 for this project, calibrated from a real editorial exchange). To use `--peer` for another field (finance, biology, CS, etc.), copy `templates/journal-profile-template.md` into a new section below, fill in the schema, and reference it by the short name you define. See the [Field adaptation](#field-adaptation) section at the bottom.
 
 ---
 
@@ -312,9 +312,90 @@ Three flagship general-interest political-science journals. The `paper_type` tax
 
 ---
 
+## Regional Science & Urban Economics
+
+> **Calibration provenance.** The RSPP profile below is **not** inferred from the journal's
+> website. It is built from a real editorial exchange held in this repo — the EiC's
+> major-revision letter and two referee reports on the K2 manuscript (`RSPP - Retours.docx`,
+> 2026). Quoted concerns are the referees' and the editor's own words. That makes it a profile of
+> this journal's *demonstrated* taste on a paper of this type, which is stronger evidence than a
+> scope statement — and also narrower: it is one editorial desk on one submission. Treat it as
+> well-grounded for aging/housing/spatial-distribution papers and as a starting point elsewhere.
+
+### Regional Science Policy & Practice (RSPP)
+
+**Short name:** `RSPP`
+
+**Focus.** The Regional Science Association International's policy-facing outlet. Publishes
+applied regional science where a spatial result carries a policy consequence — regional
+disparities, demographic change, housing affordability and access, migration, accessibility and
+public-service provision, regional development. Receptive to single-country studies and to rich
+administrative data. Less interested in methodological novelty for its own sake, and less
+interested in a spatial result with no policy reading.
+
+**Bar.** Clear a desk that asks two questions, in the editor's own framing: does the paper engage
+**policy**, and does it engage **space**? A technically sound paper that treats geography as a
+control variable rather than as the object of analysis is the characteristic near-miss here. The
+revision bar is real but cooperative — major revision with a re-review is the modal outcome, and
+the editor will name the two or three issues that actually gate acceptance rather than relaying
+every referee comment with equal weight.
+
+**Domain-referee adjustments.**
+- Contribution & Novelty 30 → 25 (a solid applied contribution clears; field-redefining is not the bar)
+- Literature Positioning 25 → 25 (unchanged — but see *Typical concerns*: positioning within the **regional science** conversation specifically, not the general-economics one)
+- External Validity / Scope 15 → 20 (single-country studies are welcome, but must say what travels)
+- Fit for Target Journal 10 → 15 (the policy-and-space double test is a genuine desk filter)
+
+**Methods-referee adjustments.**
+- **Spatial dependence is not optional.** For any paper with georeferenced units, absence of a
+  spatial diagnostic is a first-order finding, not a robustness quibble. Reviewer #1's entire
+  sixth point was *"the spatial autocorrelation could not be controlled because the spatial model
+  was not used."*
+- If paper type is `reduced-form`: Identification 35 → 30, Robustness 15 → 20. RSPP referees
+  press harder on control-set adequacy and omitted confounders than on a clean exogenous shock —
+  a credible correlational paper that says so is publishable here, an over-claimed causal one is not.
+- If paper type is `descriptive`: Construct validity 30 → 35. When the key variable is *imputed*
+  (mass appraisal, small-area estimation, ML-predicted values), how it was built and how wrong it
+  might be is the main methodological event.
+- Replication 5 → 10 (RSAI journals increasingly expect a data/code statement).
+
+**Typical concerns.**
+- "Is the control set adequate, or is an obvious confounder missing?" — both K2 referees
+  independently asked this; Reviewer #1 named financial conditions (interest rates, credit).
+- "Have you tested for spatial autocorrelation, and if it is present, why is the model aspatial?"
+- "Is the demographic or population classification fine-grained enough to support the claim?"
+  (Reviewer #1: aggregating everyone 65+ into one group "risks obscuring important distributional dynamics.")
+- "Does the paper read like a paper, or like a thesis chapter?" — Reviewer #2 objected that
+  methodology sat *after* the descriptive statistics. Section order is a live review dimension here.
+- "What is the policy reading, and for whom?"
+- "If the method is unfamiliar (ML, spatial econometrics), is it explained in terms a regional
+  scientist without that training can follow?"
+
+**Referee-pool weights.**
+- POLICY: 0.30
+- MEASUREMENT: 0.25
+- SKEPTIC: 0.20
+- CREDIBILITY: 0.15
+- STRUCTURAL: 0.05
+- THEORY: 0.05
+
+**Table format override.** Significance stars ARE used (and a `+` for 10% is accepted). Report
+observations and R² per model. **For spatial models, direct / indirect / total effects are
+expected alongside — or instead of — raw coefficients**, since an SDM coefficient is not
+interpretable on its own; state the weight matrix (contiguity order, row-standardisation) in the
+table note.
+
+**Paper-type note.** A paper whose key dependent variable is *constructed* — imputed housing
+wealth, small-area estimates, predicted values — should be refereed as `descriptive` with a
+`reduced-form` second pass, not as `reduced-form` alone. Under `reduced-form` weights the
+methods referee spends 35% of its attention on identification and only incidental attention on
+whether the constructed measure is sound, which inverts where the risk actually is.
+
+---
+
 ## Field adaptation
 
-Five of the eight profiles above are econ; three are political science. The **pipeline is field-agnostic** — nothing in `editor.md`, `domain-referee.md`, or `methods-referee.md` hard-codes economics. What varies by field is the journal profile.
+Five of the nine profiles above are econ, three are political science, and one is regional science. The **pipeline is field-agnostic** — nothing in `editor.md`, `domain-referee.md`, or `methods-referee.md` hard-codes economics. What varies by field is the journal profile.
 
 **To adapt for a different field:**
 

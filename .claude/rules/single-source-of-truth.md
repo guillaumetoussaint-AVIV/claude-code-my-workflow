@@ -7,6 +7,28 @@ paths:
 
 # Single Source of Truth: Enforcement Protocol
 
+> ## 🅓 PARTLY DORMANT for K2 — the global claim is false here (2026-09-14)
+>
+> **"The Beamer `.tex` is the authoritative source for ALL content" does not hold on this
+> project.** K2 has *per-artifact* sources of truth, and the manuscript's is a Word document:
+>
+> | Artifact | Source of truth |
+> |---|---|
+> | Manuscript | `K2_Without_Authors - V2 - Corrections - Final.docx` (Word, untracked) |
+> | Conference deck | `Slides/*.tex` (Beamer) |
+> | Analysis code | `scripts/R/` (incoming) |
+>
+> The authoritative table is in [`CLAUDE.md`](../../CLAUDE.md) → *Artifacts and Sources of Truth*;
+> that table wins over this file wherever they disagree.
+>
+> **What still applies:** the derivation discipline itself. Within the deck, the Beamer `.tex` is
+> the source and TikZ/SVG/figure exports are derived — never edit a derived artifact directly, and
+> always propagate source → derived. **What does not apply:** the `.qmd` → HTML branch of the
+> chain below (no Quarto here) and any reading that makes the deck authoritative over the paper.
+>
+> **Why it is kept, not rewritten:** the Quarto machinery is parked rather than deleted (see
+> *Dormant Machinery* in `CLAUDE.md`), and the absence should be visible rather than mysterious.
+
 **The Beamer `.tex` file is the authoritative source for ALL content.** Everything else is derived.
 
 ## The SSOT Chain

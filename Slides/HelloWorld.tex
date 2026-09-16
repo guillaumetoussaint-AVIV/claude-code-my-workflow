@@ -1,10 +1,9 @@
 % =============================================================================
 % HelloWorld.tex — Minimal Beamer sample for verifying the workflow
 %
-% This deck uses Beamer's built-in Madrid theme and has NO dependency on
-% Preambles/header.tex. It compiles on a fresh fork without any setup.
-%
-% DELETE THIS FILE and replace with your own lectures once you're ready.
+% Themed for Université Paris Dauphine–PSL. Uses Beamer's built-in Madrid theme,
+% recoloured; it has NO dependency on Preambles/header.tex, so it still compiles
+% on a bare clone.
 %
 % Compile with: /compile-latex HelloWorld
 % Or manually:  cd Slides && xelatex HelloWorld.tex
@@ -12,10 +11,37 @@
 
 \documentclass{beamer}
 \usetheme{Madrid}
+\usepackage{graphicx}
+\graphicspath{{../Figures/}}
+
+% -----------------------------------------------------------------------------
+% Palette Université Paris Dauphine–PSL
+%
+% dauphine-blue is the exact RGB fill operator read out of the official
+% Dauphine–PSL doctoral-thesis cover template (page 1 content stream), NOT from
+% a published charte graphique. The two tints below are Beamer mixes derived
+% from it, not institutional colours.
+% -----------------------------------------------------------------------------
+\definecolor{dauphine-blue}{HTML}{24388D}   % institutional blue
+\definecolor{dauphine-light}{HTML}{E9EBF4}  % derived tint, block backgrounds
+
+\setbeamercolor{structure}{fg=dauphine-blue}
+\setbeamercolor{palette primary}{bg=dauphine-blue,fg=white}
+\setbeamercolor{palette secondary}{bg=dauphine-blue!80,fg=white}
+\setbeamercolor{palette tertiary}{bg=dauphine-blue!60,fg=white}
+\setbeamercolor{titlelike}{parent=palette primary}
+\setbeamercolor{frametitle}{bg=dauphine-blue,fg=white}
+\setbeamercolor{block title}{bg=dauphine-blue,fg=white}
+\setbeamercolor{block body}{bg=dauphine-light,fg=black}
+
+% The logo ships on a white background, so it sits on the title slide rather
+% than on Madrid's coloured footline bar.
+\titlegraphic{\includegraphics[width=4.2cm]{LogoDauphine_RVB-Bleu.png}}
+
 
 \title{HelloWorld: Academic Workflow Sample}
-\author{Your Name}
-\institute{Your Institution}
+\author{Guillaume Toussaint}
+\institute[Dauphine--PSL]{Université Paris Dauphine--PSL}
 \date{\today}
 
 \begin{document}
